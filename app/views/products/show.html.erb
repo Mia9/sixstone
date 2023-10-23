@@ -4,3 +4,5 @@
 	<%= @product.description%><br>
 	<p>RM <%= @product.price%></p><br>
 	<p>Quantity: <%= @product.quantity%></p><br>
+<%= link_to 'Edit', edit_product_path(@product)%>
+<%= link_to 'Home', root_path%>

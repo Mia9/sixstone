@@ -5,5 +5,11 @@
 	<br><%= f.text_area :description, placeholder: "Description here"%>
 	<br><%= f.number_field :price, placeholder: "Price in RM", min: 1%>
 	<br><%= f.number_field :quantity, placeholder: "Quantity", min: 1%>
-	<br><%= f.submit 'Create'%>
+	<br>
+
+	<% if @product.new_record? %>
+			<%= f.submit'Create' %>
+	<% else %>
+			<%= f.submit 'Update'%>
+	<% end %>
 <%end%>
