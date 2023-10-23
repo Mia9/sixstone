@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+This is the final project for FSSD course from Elevate Academy
+About the website:
+* Accessories, stones and jewelleries
