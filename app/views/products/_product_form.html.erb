@@ -1,6 +1,7 @@
 <%= form_with model: @product do |f|%>
 	<%= f.collection_select(:category, Product::CATEGORIES, :to_s, :humanize, { include_blank: "Select category"})%>
-	
+	<br><%= f.label :photos%>
+	<br><%= f.file_field :photos, multiple: true%>
 	<br><%= f.text_field :name, placeholder: "Name"%>
 	<br><%= f.text_area :description, placeholder: "Description here"%>
 	<br><%= f.number_field :price, placeholder: "Price in RM", min: 1%>

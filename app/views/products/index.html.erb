@@ -1,11 +1,21 @@
 <h2>Products here temporarily</h2>
 
+<h2>Products List</h2>
+<ul>
 <% if @products.any?%>
 	<% @products.each do |product|%>
-		<%= link_to product_path(product) do%>
-		<%= product.name%><br>
-		<%end%>
-	<%end%><br>
+		<li>
+			<%= link_to product_path(product) do%>			
+				<%if product.photos.attached?%>
+					<%= product.name%><br>
+					<%= image_tag product.photos.first, width: 80, height: 80%>
+				<%end%>
+			<%end%>
+		<%end%><br>
+		</li>
+	</ul>
+<%else%>
+	<p>No Products Found.</p>
 <%end%>
 <%= link_to 'Create new product', new_product_path(@products)%><br>
 <%= link_to 'Homepage', root_path%><br>

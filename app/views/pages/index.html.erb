@@ -1,10 +1,4 @@
-<% if @products.any?%>
-	<% @products.each do |product|%>
-		<%= link_to product_path(product) do%>
-		<%= product.name%><br>
-		<%end%>
-	<%end%><br>
-<%end%>
+
 
 <% if user_signed_in?%>
 	<h1>Hello ruby! You are <%= current_user.email%></h1>
@@ -15,4 +9,21 @@
 <%else%>
 	<%= link_to 'Sign in', new_user_session_path%><br>
 	<%= link_to 'Sign Up', new_user_registration_path%>
+<%end%><br><br>
+<h2>Products List</h2>
+<ul>
+<% if @products.any?%>
+	<% @products.each do |product|%>
+		<li>
+			<%= link_to product_path(product) do%>			
+				<%if product.photos.attached?%>
+					<%= product.name%><br>
+					<%= image_tag product.photos.first, width: 80, height: 80%>
+				<%end%>
+			<%end%>
+		<%end%><br>
+		</li>
+	</ul>
+<%else%>
+	<p>No Products Found.</p>
 <%end%>
