@@ -1,0 +1,11 @@
+<h2>Products here temporarily</h2>
+
+<% if @products.any?%>
+	<% @products.each do |product|%>
+		<%= link_to product_path(product) do%>
+		<%= product.name%><br>
+		<%end%>
+	<%end%><br>
+<%end%>
+<%= link_to 'Create new product', new_product_path(@products)%><br>
+<%= link_to 'Homepage', root_path%>

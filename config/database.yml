@@ -5,7 +5,7 @@ default: &default
 
 development:
   <<: *default
-  database: airbnb-clone-9thweek
+  database: sixtone
   host: localhost
   user: postgres
   password: 123456
