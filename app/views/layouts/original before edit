@@ -1,0 +1,20 @@
+<%if @products.any?%>
+<div class="row row-cols-auto px-2">
+  <% @products.each do |product|%>
+  <div class="col-md-2" > 
+    <div class="card border-danger h-100 mb-3" style="width: 13rem;">
+    <%= link_to product_path(product) do%>
+      <%if product.photos.attached?%>
+        <i class="fa-solid fa-star"></i>
+          <%= product.name%><br>
+          <%= image_tag product.photos.first, width: 80, height: 80%>
+        <%end%>       
+        <div class="card-body">
+          <p class="card-text"><%= listing.title %></p>
+        </div>
+    </div>
+    <%end%>
+  </div>   
+  <%end%> 
+</div>    
+<%end%>

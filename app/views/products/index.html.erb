@@ -1,21 +1,27 @@
-<h2>Products here temporarily</h2>
+<h2>Products</h2>
 
-<h2>Products List</h2>
-<ul>
-<% if @products.any?%>
-	<% @products.each do |product|%>
-		<li>
-			<%= link_to product_path(product) do%>			
-				<%if product.photos.attached?%>
-					<%= product.name%><br>
-					<%= image_tag product.photos.first, width: 80, height: 80%>
-				<%end%>
-			<%end%>
-		<%end%><br>
-		</li>
-	</ul>
+<%if @products.any?%>
+<div class="row row-cols-auto px-2">
+  <% @products.each do |product|%>
+  <div class="col-md-2 p-2" > 
+    <div class="card bg-light h-100 mb-3" style="width: 13rem;">
+    <%= link_to product_path(product), class: 'no-underline' do%>
+        <%if product.photos.attached?%>
+          <i class="fa-solid fa-star"></i>
+            <%= product.name%><br>
+            <%= image_tag product.photos.first, width: 150, height: 150 %>
+        <%end%> 
+    <%end%>      
+        <div class="card-body">
+          <p class="card-text">RM <%= product.price %></p>
+        </div>
+    </div>
+    
+  </div>   
+  <%end%> 
+</div>
 <%else%>
-	<p>No Products Found.</p>
+  <p>No Products Found.</p>  
 <%end%>
 <%= link_to 'Create new product', new_product_path(@products)%><br>
-<%= link_to 'Homepage', root_path%><br>
+<!-- <%#= link_to 'Homepage', root_path%> -->

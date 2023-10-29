@@ -1,29 +1,84 @@
+<section>
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <%= image_tag("flowerpins.jpg")%></svg>
 
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Handcrafted</h1>
+            <p>Accsessories</p>            
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <%= image_tag("handcrafting.png")%></svg>
 
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Another example headline.</h1>
+            <p>Some representative placeholder content for the second slide of the carousel.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <%= image_tag("pexels.jpg")%>
+          </svg>
+
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1>One more for good measure.</h1>
+            <p>Some representative placeholder content for the third slide of this carousel.</p>           
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+
+    
 <% if user_signed_in?%>
-	<h1>Hello ruby! You are <%= current_user.email%></h1>
-	<h3>Your role is <%= current_user.role%>.</h3><br>
-	<%= link_to 'Products', products_path(@products)%><br>
-	<%= link_to 'Signed Out', destroy_user_session_path, data: {
-	turbo_method: :delete}%>
+  <h4>Hello <%= current_user.role%>! <i class="fa-regular fa-star"></i>Your email is <%= current_user.email%></h4><br>
+<%end%><br>
+<h2>Latest</h2>
+
+<%if @products.any?%>
+<div class="row row-cols-auto px-2">
+  <% @products.first(3).each do |product|%>
+  <div class="col-sm p-2" > 
+    <div class="card bg-light h-100 mb-3" style="width: 25rem;">
+    <%= link_to product_path(product), class: 'no-underline' do%>
+        <%if product.photos.attached?%>
+          <i class="fa-solid fa-star"></i>
+            <%= product.name%><br>
+            <%= image_tag product.photos.first, width: 300, height: 300 %>
+        <%end%> 
+    <%end%>      
+        <div class="card-body">
+          <p class="card-text">RM <%= product.price %></p>
+        </div>
+    </div>
+    
+  </div>   
+  <%end%> 
+</div>
 <%else%>
-	<%= link_to 'Sign in', new_user_session_path%><br>
-	<%= link_to 'Sign Up', new_user_registration_path%>
-<%end%><br><br>
-<h2>Products List</h2>
-<ul>
-<% if @products.any?%>
-	<% @products.each do |product|%>
-		<li>
-			<%= link_to product_path(product) do%>			
-				<%if product.photos.attached?%>
-					<%= product.name%><br>
-					<%= image_tag product.photos.first, width: 80, height: 80%>
-				<%end%>
-			<%end%>
-		<%end%><br>
-		</li>
-	</ul>
-<%else%>
-	<p>No Products Found.</p>
+  <p>No Products Found.</p>  
 <%end%>
