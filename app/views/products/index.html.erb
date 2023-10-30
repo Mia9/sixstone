@@ -23,5 +23,8 @@
 <%else%>
   <p>No Products Found.</p>  
 <%end%>
-<%= link_to 'Create new product', new_product_path(@products)%><br>
+
+<% if admin? %>
+  <%= link_to 'Create new product', new_product_path(@products)%><br>
+<%end%>
 <!-- <%#= link_to 'Homepage', root_path%> -->

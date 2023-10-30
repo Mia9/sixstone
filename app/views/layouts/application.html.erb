@@ -24,10 +24,14 @@
     <%end%>
   </div>
   <div>
-    <a href="aboutus" style="text-decoration: none;">About Us</a>
+    <%= link_to aboutus_path, class: 'no-underline' do%>
+    About Us
+    <%end%>
   </div>
   <div>
-    <a href="contact" style="text-decoration: none;">Contact Us</a>
+    <%= link_to contact_path, class: 'no-underline' do%>
+    Contact Us
+    <%end%>
   </div>
 
   <div class="dropdown">
@@ -36,7 +40,7 @@
         <%= current_user.email%>
       </h3>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink"> 
-        <li><%= link_to 'Create product', new_product_path(@products)%></li>
+        <li><%= link_to 'Dashboard', user_path(current_user) %></li>
         <li><%= link_to 'Logout', destroy_user_session_path, data: {turbo_method: :delete}, class: 'no-underline' %></li>
     <%else%> 
         <li class="btn btn-outline-info"><%= link_to 'Login', new_user_session_path, class: 'no-underline'%></li>

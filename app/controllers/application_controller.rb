@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
 
 	before_action :current_cart
 
+	helper_method :admin?
+    def admin?
+      current_user && current_user.role == "admin"
+    end
+
 	private
 		def current_cart
 			if session[:cart_id]

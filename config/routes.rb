@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   get 'aboutus', to: 'pages#aboutus'
   get 'contact', to: 'pages#contact'
 
-  get 'cart', to: 'cart#show'
+  get 'cart', to: 'carts#show'
   post 'cart/add'
   post 'cart/remove'
   
+  resources :users, only: [:show, :edit, :destroy]
   resources :products
   resources :order_items
   resources :orders
