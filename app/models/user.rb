@@ -4,11 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :products, dependent: :destroy
-  has_many :order_items, dependent: :destroy
-  has_many :orders
   has_one :cart
-
+  has_many :orders
+  has_many :products, through: :orders
+  has_many :products, through: :cart
+  has_many :products, dependent: :destroy
+  
   enum role: [:customer, :admin]
   after_initialize :set_default_role, :if => :new_record?
   def set_default_role

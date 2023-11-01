@@ -12,7 +12,10 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "sassc-rails"
+
 gem "devise"
+gem "acts_as_shopping_cart", "~> 0.4.1"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

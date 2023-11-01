@@ -11,7 +11,7 @@
 	
 	<p>Category: <%= @product.category%></p>
 	<p>Product Details: <%= @product.description%></p>
-	<p>RM <%= @product.price%></p>
+	<p><%= number_to_currency(@product.price, unit:"RM ") %></p>
 	<p>Available Quantity: <%= @product.quantity%></p>
 	<br>
 	
@@ -32,8 +32,8 @@
 		<p class="font-weight-bold mb-0"><span><i class="fa-solid fa-filter"></i></span> <b>Delivery options</b> </p>
 		<p class="text-secondary">View delivery options here</p>
 	</div>
-	<%= link_to cart_path do%>
-	<i class="fa-solid fa-cart-shopping"></i>
+	<%= link_to shopping_cart_path do%>
+	<i class="fa-solid fa-cart-shopping">Show Cart Page</i>
 	<%end%>
 	<br><br>
 
@@ -41,3 +41,5 @@
 <%= link_to 'Delete', product_path(@product), 
 		data: {turbo_method: :delete,
 		turbo_confirm: "Are you sure?"}%><br>
+
+<%= button_to 'Add to cart', shopping_cart_items_path(item_id: @product, class: @product.class), class: 'btn btn-dark btn-lg w-100' %>

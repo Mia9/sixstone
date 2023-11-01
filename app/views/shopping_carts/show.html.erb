@@ -1,0 +1,21 @@
+------------------------------
+<h1>Shopping Cart</h1>
+==============================
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render :partial => 'shopping_cart_item', 
+       :collection => @shopping_cart.shopping_cart_items%>
+    </tbody>
+  </table>
+</div>
+<%= link_to 'Order Page'%>
+<p>need cart id before proceed to order page form</p>

@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   get 'aboutus', to: 'pages#aboutus'
   get 'contact', to: 'pages#contact'
 
-  get 'cart', to: 'carts#show'
-  post 'cart/add'
-  post 'cart/remove'
+  # get 'shopping_cart', to: 'shopping_carts#show'
+  # post 'cart/add'
+  # post 'cart/remove'
   
-  resources :users, only: [:show, :edit, :destroy]
+  resource :shopping_cart, path: 'cart', only: [:show, :destroy]
+  resources :shopping_cart_items, path: 'items', only: [:create, :update, :destroy]
+
+  resources :users, only: [:show, :edit, :destroy, :destroy]
   resources :products
-  resources :order_items
   resources :orders
   root "pages#index"
 end
