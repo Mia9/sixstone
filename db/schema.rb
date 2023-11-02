@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_01_032553) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_02_025044) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,14 +43,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_01_032553) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.bigint "product_id", null: false
     t.integer "quantity", default: 0
     t.decimal "subtotal", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "order_id", null: false
+    t.string "orderable_type"
+    t.bigint "orderable_id"
+    t.decimal "price", precision: 10, scale: 2
     t.index ["order_id"], name: "index_order_items_on_order_id"
-    t.index ["product_id"], name: "index_order_items_on_product_id"
+    t.index ["orderable_type", "orderable_id"], name: "index_order_items_on_orderable"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -104,6 +106,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_01_032553) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users"
 end

@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 
   get 'aboutus', to: 'pages#aboutus'
   get 'contact', to: 'pages#contact'
-
-  # get 'shopping_cart', to: 'shopping_carts#show'
-  # post 'cart/add'
-  # post 'cart/remove'
   
   resource :shopping_cart, path: 'cart', only: [:show, :destroy]
   resources :shopping_cart_items, path: 'items', only: [:create, :update, :destroy]

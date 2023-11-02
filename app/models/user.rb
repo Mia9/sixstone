@@ -4,10 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :cart
-  has_many :orders
-  has_many :products, through: :orders
-  has_many :products, through: :cart
   has_many :products, dependent: :destroy
   
   enum role: [:customer, :admin]
