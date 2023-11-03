@@ -17,5 +17,9 @@
     </tbody>
   </table>
 </div>
-<%= link_to 'Order Page'%>
-<p>need cart id before proceed to order page form</p>
+
+<%if @shopping_cart.shopping_cart_items.present? %>
+  <%= link_to 'Checkout', new_order_path %>
+<%else%>
+  <p>Your cart is empty.</p>
+<%end%>

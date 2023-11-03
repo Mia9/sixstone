@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_02_025044) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_03_025620) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,11 +56,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_02_025044) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.decimal "total_price", precision: 10, scale: 2
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.string "name"
+    t.string "phone"
+    t.string "email"
+    t.string "address"
+    t.string "town"
+    t.string "postcode"
+    t.decimal "subtotal", precision: 10, scale: 2
+    t.decimal "shipping_cost", precision: 10, scale: 2
+    t.decimal "total", precision: 10, scale: 2
+    t.boolean "paid", default: false
+    t.integer "status"
   end
 
   create_table "products", force: :cascade do |t|
@@ -106,5 +114,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_02_025044) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "order_items", "orders"
-  add_foreign_key "orders", "users"
 end

@@ -1,4 +1,6 @@
-<h1>Order Form testing </h1>
-
-<p>Name: </p>
-<p>Address: </p>
+<div class="container">
+	<h2>New Order Form</h2>
+	<%= simple_form_for(@order) do |f| %>
+		<%= f.input :name %>
+	<%end%>
+</div>

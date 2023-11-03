@@ -59,26 +59,27 @@
 <%end%><br>
 <h2>Latest</h2>
 
+
 <%if @products.any?%>
-<div class="row row-cols-auto px-2">
-  <% @products.first(3).each do |product|%>
-  <div class="col-sm p-2" > 
-    <div class="card bg-light h-100 mb-3" style="width: 25rem;">
-    <%= link_to product_path(product), class: 'no-underline' do%>
-        <%if product.photos.attached?%>
-          <i class="fa-solid fa-star"></i>
-            <%= product.name%><br>
-            <%= image_tag product.photos.first, width: 300, height: 300 %>
-        <%end%> 
-    <%end%>      
-        <div class="card-body">
-          <p class="card-text">RM <%= product.price %></p>
-        </div>
-    </div>
-    
-  </div>   
-  <%end%> 
-</div>
-<%else%>
-  <p>No Products Found.</p>  
-<%end%>
+  <div class="row row-cols-auto px-5">
+    <% @products.last(6).each do |product|%>
+    <div class="col-sm p-2" > 
+      <div class="card bg-light h-100 mb-3" style="width: 25rem;">
+      <%= link_to product_path(product), class: 'no-underline' do%>
+          <%if product.photos.attached?%>
+            <i class="fa-solid fa-star"></i>
+              <%= product.name%><br>
+              <%= image_tag product.photos.first, width: 300, height: 300 %>
+          <%end%> 
+      <%end%>      
+          <div class="card-body">
+            <p class="card-text">RM <%= product.price %></p>
+          </div>
+      </div>
+      
+    </div>   
+    <%end%> 
+  </div>
+  <%else%>
+    <p>No Products Found.</p>  
+  <%end%>
