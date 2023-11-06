@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-	before_action :extract_shopping_cart
+	before_action :authenticate_user!
+  before_action :extract_shopping_cart
 
 	helper_method :admin?
     def admin?
