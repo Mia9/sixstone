@@ -1,5 +1,21 @@
 <h1>Welcome <%= current_user.email%></h1>
 <p>Here are your order history</p>
 
-
+<%if current_user.orders.any? %>
+<div class="row row-cols-auto px-2">	
+	<% current_user.orders.each do |order| %>
+	<div class="col-md-2 p-2" > 
+		<div class="card bg-light h-100 mb-3" style="width: 13rem;">
+			<%= link_to order_path(order) do%>
+			<%= order.name %><br>
+			<%end%>
+			<%= order.email%><br>
+			<%= number_to_currency(order.total, unit:"RM ")%><br>
+		</div>
+	</div>
+	<%end%><br>	
+</div>
+<%end%>
+<% if admin? %>
 <p><%= link_to 'Order histories', orders_path(@orders) %></p>
+<%end%>

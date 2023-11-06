@@ -16,14 +16,14 @@ class OrdersController < ApplicationController
 	end
 
 	def create
-		@order = Order.new(order_params)
+		@order = current_user.orders.create(order_params)
 		if @order.save
       	   extract_items_from_cart
 
       	   @shopping_cart.clear
            redirect_to order_path(@order), notice: 'Order was successfully created.'
         else
-           render :new
+           render :new, notice: 'Order failed.'
         end	
 	end
 

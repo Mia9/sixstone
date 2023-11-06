@@ -1,6 +1,23 @@
 <h1>Order Details</h1>
 
-<%= @order.name%><br>
-<%= @order.email%><br>
-<%= @order.total%><br>
-<%= @order.created_at%>
+<% @order.order_items.each do |order_item| %>
+	Item name: <%= order_item.orderable.name%><br>
+	<%= image_tag order_item.orderable.photos.last, width: 200, height: 200 %><br>
+<%end%>
+
+
+Name: <%= @order.name%><br>
+Email reference: <%= @order.email%><br>
+Total: RM <%= @order.total%><br>
+Qty: <%= @order.order_items.count%><br>
+Created at: <%= @order.created_at%><br>
+<br>
+
+<% @order.order_items.each do |order_item| %>
+	<% order_item.orderable.photos.each do |photo|%><br>
+		<%= image_tag photo, width: 400, height: 400 %>
+	<%end%>
+<%end%><br>
+
+
+
