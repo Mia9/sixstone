@@ -1,23 +1,77 @@
-<h1>Order Details</h1>
+<section class="h-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-10 col-xl-8">
+        <div class="card" style="border-radius: 10px;">
+          <div class="card-header px-4 py-5">
+            <h5 class="text-muted mb-0">Thanks for your Order, <span style="color: #a8729a;"><%= @order.name%></span>!</h5>
+          </div>
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <p class="lead fw-normal mb-0" style="color: #a8729a;">Receipt</p>
+              <p class="small text-muted mb-0">Receipt Number : <%= @order.id%></p>
+            </div>
+            <div class="card shadow-0 border mb-4">
+                <div class="card-body">
 
-<% @order.order_items.each do |order_item| %>
-	Item name: <%= order_item.orderable.name%><br>
-	<%= image_tag order_item.orderable.photos.last, width: 200, height: 200 %><br>
-<%end%>
+	                <div class="row">
+	                <% @order.order_items.each do |order_item| %>
+	                    <div class="col-md-2">
+	                    	<%= image_tag order_item.orderable.photos.last, width: 200, height: 200, class: "img-fluid"  %>                      
+	                    </div>
+
+	                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+	                   		<p class="text-muted mb-0"><%= order_item.orderable.name%></p>
+	                    </div>                   
+	                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+	                    	<p class="text-muted mb-0 small">.</p>
+	                    </div>
+	                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+	                    	<p class="text-muted mb-0 small">Quantity: <%= order_item.quantity%></p>
+	                    </div>
+	                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+	                    	<p class="text-muted mb-0 small">.</p>
+	                    </div>
+	                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+	                    	<p class="text-muted mb-0 small">RM <%= order_item.subtotal%></p>
+	                    </div>
+	                </div>
+	                <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+	                <div class="row d-flex align-items-center"> 
+	                <%end%> 
+	              	</div>
+            	</div>
+            </div>
+	            <div class="d-flex justify-content-between pt-2">
+	              <p class="fw-bold mb-0">Order Details</p>
+	              <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span>RM <%= @order.total%></p>
+	            </div>
 
 
-Name: <%= @order.name%><br>
-Email reference: <%= @order.email%><br>
-Total: RM <%= @order.total%><br>
-Qty: <%= @order.order_items.count%><br>
-Created at: <%= @order.created_at%><br>
-<br>
+	            <div class="d-flex justify-content-between">
+	              <p class="text-muted mb-0">Invoice Date : <%= @order.created_at.strftime("%d %b %y")%></p>
+	              <p class="text-muted mb-0"><span class="fw-bold me-4">Total quantity</span><%= @order.order_items.count%> pcs</p>
+	            </div>
 
-<% @order.order_items.each do |order_item| %>
-	<% order_item.orderable.photos.each do |photo|%><br>
-		<%= image_tag photo, width: 400, height: 400 %>
-	<%end%>
-<%end%><br>
+	            <div class="d-flex justify-content-between">
+	              <p class="text-muted mb-0">Email reference : <%= @order.email%></p>
+	              <p class="text-muted mb-0"><span class="fw-bold me-4">-</span>-</p>
+	            </div>
+
+	            <div class="d-flex justify-content-between mb-5">
+	              <p class="text-muted mb-0">Receipt Number : <%= @order.id%></p>
+	              <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span>RM <%= @order.shipping_cost%></p>
+	            </div>
+        	</div>
+	        <div class="card-footer border-0 px-4 py-5"
+	            style="background-color: #a8729a; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+	            <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total paid: <span class="h2 mb-0 ms-2">RM <%= @order.total%></span></h5>
+	        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 

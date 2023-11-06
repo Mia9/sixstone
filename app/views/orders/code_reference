@@ -1,0 +1,15 @@
+# for iterating photos through orderable (product)
+
+<% @order.order_items.each do |order_item| %>
+	<% order_item.orderable.photos.each do |photo|%><br>
+		<%= image_tag photo, width: 400, height: 400 %>
+	<%end%>
+<%end%><br>
+
+# another way to iterate photos
+<% @order.order_items.each do |order_item| %>
+	Item name: <%= order_item.orderable.name%><br>
+
+	<%= image_tag order_item.orderable.photos.last, width: 200, height: 200 %><br>
+	Qty: <%= order_item.quantity%>
+<%end%>
