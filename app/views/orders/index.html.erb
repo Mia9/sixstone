@@ -1,8 +1,17 @@
-<h1>All orders here</h1>
+<h1>All order history</h1>
 
 <%if @orders.any?%>
+<div class="row row-cols-auto px-2">	
 	<% @orders.each do |order| %>
-	<%= order.subtotal %>
-	<%= order.name %>
-	<%end%>
+	<div class="col-md-2 p-2" > 
+		<div class="card bg-light h-100 mb-3" style="width: 13rem;">
+			<%= link_to order_path(order) do%>
+			<%= order.name %><br>
+			<%end%>
+			<%= order.email%><br>
+			<%= number_to_currency(order.total, unit:"RM ")%><br>
+		</div>
+	</div>
+	<%end%><br>	
+</div>
 <%end%>
