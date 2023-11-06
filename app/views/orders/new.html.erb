@@ -1,6 +1,15 @@
 <div class="container">
 	<h2>New Order Form</h2>
-	<%= simple_form_for(@order) do |f| %>
-		<%= f.input :name %>
+	<%= simple_form_for @order do |f| %>
+		<%= f.input_field :name, placeholder: "Name", class: 'form-control'%><br>
+		<%= f.input :phone, placeholder: "Phone Number"%><br>
+		<%= f.input :email, placeholder: "Email"%><br>
+		<%= f.input :address, placeholder: "Address"%><br>
+		<%= f.input :town, placeholder: "Town"%><br>
+		<%= f.input :postcode, placeholder: "Postcode"%><br>
+		<%= f.input :subtotal, as: :string, readonly: true, input_html: { value: @shopping_cart.subtotal} %><br>
+		<%= f.input :total, as: :string, readonly: true, input_html: { value: @shopping_cart.total }%><br>
+		<%= f.input :shipping_cost, as: :string, readonly: true, input_html: { value: @shopping_cart.shipping_cost}%>
+		<%= f.button :submit, 'Pay'%>
 	<%end%>
 </div>

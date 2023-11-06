@@ -1,0 +1,8 @@
+<h1>All orders here</h1>
+
+<%if @orders.any?%>
+	<% @orders.each do |order| %>
+	<%= order.subtotal %>
+	<%= order.name %>
+	<%end%>
+<%end%>

@@ -18,6 +18,10 @@ gem "autoprefixer-rails"
 gem "devise"
 gem "acts_as_shopping_cart", "~> 0.4.1"
 
+# gem "braintree"
+
+gem "simple_form"
+
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
