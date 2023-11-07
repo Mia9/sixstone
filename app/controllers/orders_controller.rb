@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+	
 	def index
 		@orders = Order.all
 	end
@@ -34,6 +35,12 @@ class OrdersController < ApplicationController
 		else
 			render :edit
 		end
+	end
+
+	def destroy
+		@order = Order.find(params[:id])
+		@order.destroy
+		redirect_to orders_path(@orders)
 	end
 
 	private

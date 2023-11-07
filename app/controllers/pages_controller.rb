@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show, :aboutus, :contact]
 	def index
-		@products = Product.all
+		@products = Product.all	
 	end
 
 	def aboutus	

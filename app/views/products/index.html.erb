@@ -1,4 +1,12 @@
-<h2>Products</h2>
+
+<form action="<%= products_path%>" class="d-flex row align-items-end px-1 my-1">
+  <div class="col-auto">
+    <input class="form-control" type="text" placeholder="Search by category" name="category">
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-outline-primary" type="Search">Search</button>
+  </div>
+</form>
 
 <%if @products.any?%>
 <div class="row row-cols-auto px-2">

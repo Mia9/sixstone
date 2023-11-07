@@ -65,13 +65,17 @@
         	</div>
 	        <div class="card-footer border-0 px-4 py-5"
 	            style="background-color: #a8729a; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-	            <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total paid: <span class="h2 mb-0 ms-2">RM <%= @order.total%></span></h5>
+	            <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total to be paid: <span class="h2 mb-0 ms-2">RM <%= @order.total%></span></h5>
 	        </div>
         </div>
       </div>
     </div>
   </div>
+  <%if admin?%>
+  <div>
+		<%= link_to 'Delete', order_path(@order), 
+				data: {turbo_method: :delete,
+				turbo_confirm: "Are you sure?"}, class: 'btn btn-outline-danger'%>
+	</div>
+	<%end%>
 </section>
-
-
-

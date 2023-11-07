@@ -1,7 +1,12 @@
 class ProductsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 	def index
-		@products = Product.all
+		if params[:category]
+			@products = Product.where("category LIKE ? OR description LIKE ?",
+				"%#{params[:category]}%", "%#{params[:category]}%")
+		else
+			@products = Product.all
+		end
 	end
 
 	def new

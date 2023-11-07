@@ -13,7 +13,7 @@
         <div class="container">
           <div class="carousel-caption text-start">
             <h1>Handcrafted</h1>
-            <p>Accsessories</p>            
+            <p>Accessories</p>            
           </div>
         </div>
       </div>
@@ -23,9 +23,8 @@
 
         <div class="container">
           <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+            <h1>Accessories</h1>
+            <p>Incorporated with gemstones.</p>
           </div>
         </div>
       </div>
@@ -36,8 +35,8 @@
 
         <div class="container">
           <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>           
+            <h1>Handmade Jewelleries</h1>
+            <p>Made with mixtures of crystals and precious gemstones.</p>           
           </div>
         </div>
       </div>
@@ -55,13 +54,13 @@
 
     
 <% if user_signed_in?%>
-  <h4>Hello <%= current_user.role%>! <i class="fa-regular fa-star"></i>Your email is <%= current_user.email%></h4><br>
+  <h4><i class="fa-regular fa-star"></i> Hello dear <%= current_user.role%>! <i class="fa-regular fa-star"></i>Welcome to 6stone!<i class="fa-regular fa-star"></i></h4><br>
 <%end%><br>
-<h2>Latest</h2>
+<h2>Latest Crafts</h2>
 
 
 <%if @products.any?%>
-  <div class="row row-cols-auto px-5">
+  <div class="row row-cols-auto px-4">
     <% @products.last(6).each do |product|%>
     <div class="col-sm p-2" > 
       <div class="card bg-light h-100 mb-3" style="width: 25rem;">

@@ -1,15 +1,18 @@
-<div class="container">
-	<h2>Billing Order Details</h2>
-	<%= simple_form_for @order do |f| %>
-		<%= f.input_field :name, placeholder: "Name", class: 'form-control'%><br>
-		<%= f.input :phone, placeholder: "Phone Number"%><br>
-		<%= f.input :email, placeholder: "Email"%><br>
-		<%= f.input :address, placeholder: "Address"%><br>
-		<%= f.input :town, placeholder: "Town"%><br>
-		<%= f.input :postcode, placeholder: "Postcode"%><br>
-		<%= f.input :subtotal, as: :string, readonly: true, input_html: { value: @shopping_cart.subtotal} %><br>
-		<%= f.input :total, as: :string, readonly: true, input_html: { value: @shopping_cart.total }%><br>
-		<%= f.input :shipping_cost, as: :string, readonly: true, input_html: { value: @shopping_cart.shipping_cost}%>
-		<%= f.button :submit, 'Pay'%>
-	<%end%>
+<div style="background-color: #fbe4ff;">
+	<div class="container w-50 border border-5 rounded-5 p-4">
+		<h2>Billing Order Details</h2>
+		<%= simple_form_for @order do |f| %>
+			<%= f.input_field :name, placeholder: "Name", class: 'form-control'%>
+			<%= f.input :phone, placeholder: "Phone Number"%>
+			<%= f.input :email, placeholder: "Email"%>
+			<%= f.input :address, placeholder: "Address"%>
+			<%= f.input :town, placeholder: "Town"%>
+			<%= f.input :postcode, placeholder: "Postcode"%>
+			<%= f.input :subtotal, as: :string, readonly: true, input_html: { value: @shopping_cart.subtotal} %>
+			<%= f.input :total, as: :string, readonly: true, input_html: { value: @shopping_cart.total }%>
+			<%= f.input :shipping_cost, as: :string, readonly: true, input_html: { value: @shopping_cart.shipping_cost}%>
+			<%= f.button :submit, 'Checkout', class: 'btn btn-outline-secondary'%>
+		<%end%>
+	</div>
 </div>
+	

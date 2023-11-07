@@ -18,7 +18,8 @@ gem "autoprefixer-rails"
 gem "devise"
 gem "acts_as_shopping_cart", "~> 0.4.1"
 
-# gem "braintree"
+gem "braintree"
+gem "gon", "~> 5.1.2"
 
 gem "simple_form"
 

@@ -5,14 +5,15 @@
 	<% @orders.each do |order| %>
 	<div class="col-md-2 p-2" > 
 		<div class="card bg-light h-100 mb-3" style="width: 13rem;">
-			<%= link_to order_path(order) do%>
-			<%= order.name %><br>
+			<%= link_to order_path(order), class: 'no-underline' do%>
+			name: <%= order.name %><br>
 			<%end%>
-			<%= order.email%><br>
-			<%= number_to_currency(order.total, unit:"RM ")%><br>
+			email ref: <%= order.email%><br>
+			total paid: <%= number_to_currency(order.total, unit:"RM ")%><br>
 		</div>
 	</div>
 	<%end%><br>	
 </div>
 <%end%>
+
 <p><%= l Time.now, format: :default %></p>

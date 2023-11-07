@@ -96,6 +96,9 @@ GEM
     bootstrap (5.3.2)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
+    braintree (4.15.0)
+      builder (>= 3.2.4)
+      rexml (>= 3.1.9)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -123,6 +126,11 @@ GEM
     ffi (1.16.3-x64-mingw-ucrt)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    gon (5.1.2)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -136,6 +144,7 @@ GEM
       rdoc
       reline (>= 0.3.8)
     jmespath (1.6.2)
+    json (2.6.3)
     loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -160,6 +169,7 @@ GEM
       money (~> 6.13)
       railties (>= 3.0)
     msgpack (1.7.2)
+    multi_json (1.15.0)
     net-imap (0.4.2)
       date
       net-protocol
@@ -218,6 +228,8 @@ GEM
     regexp_parser (2.8.2)
     reline (0.3.9)
       io-console (~> 0.5)
+    request_store (1.5.1)
+      rack (>= 1.4)
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -285,9 +297,11 @@ DEPENDENCIES
   aws-sdk-s3 (~> 1)
   bootsnap
   bootstrap (~> 5.3.2)
+  braintree
   capybara
   debug
   devise
+  gon (~> 5.1.2)
   image_processing (~> 1.2)
   importmap-rails
   pg (~> 1.1)
