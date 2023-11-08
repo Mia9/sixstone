@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 	before_action :authenticate_user!
   before_action :extract_shopping_cart
+  protect_from_forgery with: :exception
 
 	helper_method :admin?
     def admin?
