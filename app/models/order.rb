@@ -8,5 +8,5 @@ class Order < ApplicationRecord
 	validates :town, presence: true
 	validates :postcode, presence: true
 
-	enum status: %w[received cancelled processing shipped], _default: 'received'
+	enum status: %w[pending cancelled processing shipped], _default: 'received'
 end
