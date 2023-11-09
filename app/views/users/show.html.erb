@@ -7,10 +7,10 @@
 	<div class="col-md-2 p-2" > 
 		<div class="card bg-light h-100 mb-3" style="width: 13rem;">
 			<%= link_to order_path(order) do%>
-			<%= order.name %><br>
+			Name: <%= order.name %><br>
 			<%end%>
-			<%= order.email%><br>
-			<%= number_to_currency(order.total, unit:"RM ")%><br>
+			Email Ref: <%= order.email%><br>
+			Payment: RM <%= number_to_currency(order.total, unit:"RM ")%><br>
 		</div>
 	</div>
 	<%end%><br>	
