@@ -73,7 +73,7 @@
   </div>
 
 <div>
-  	<%= link_to 'Proceed to payment', class: 'btn btn-outline-secondary'%>
+	<%= link_to 'Proceed to payment', new_checkout_path(amount: @order.total), class: 'btn btn-outline-secondary'%>
 </div>
 
   <%if admin?%>
