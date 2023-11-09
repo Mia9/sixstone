@@ -1,84 +1,86 @@
-<section>
-  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <%= image_tag("flowerpins.jpg")%></svg>
+<div class="gradient-custom-1">
+  <section>
+      <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <%= image_tag("flowerpins.jpg")%></svg>
 
-        <div class="container">
-          <div class="carousel-caption text-start">
-            <h1>Handcrafted</h1>
-            <p>Accessories</p>            
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h1>Handcrafted</h1>
+                <p>Accessories</p>            
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <%= image_tag("handcrafting.png")%></svg>
+
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>Accessories</h1>
+                <p>Incorporated with gemstones.</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <%= image_tag("pexels.jpg")%>
+              </svg>
+
+            <div class="container">
+              <div class="carousel-caption text-end">
+                <h1>Handmade Jewelleries</h1>
+                <p>Made with mixtures of crystals and precious gemstones.</p>           
+              </div>
+            </div>
           </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <%= image_tag("handcrafting.png")%></svg>
+    </section>
 
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Accessories</h1>
-            <p>Incorporated with gemstones.</p>
+        
+    <% if user_signed_in?%>
+      <h4><i class="fa-regular fa-star"></i> Hello dear <%= current_user.role%>! <i class="fa-regular fa-star"></i>Welcome to 6stone!<i class="fa-regular fa-star"></i></h4><br>
+    <%end%><br>
+    <h2>Latest Crafts</h2>
+
+
+    <%if @products.any?%>
+      <div class="row row-cols-auto px-4">
+        <% @products.last(6).each do |product|%>
+        <div class="col-sm p-2" > 
+          <div class="card bg-light h-100 mb-3" style="width: 25rem;">
+          <%= link_to product_path(product), class: 'no-underline' do%>
+              <%if product.photos.attached?%>
+                <i class="fa-solid fa-star"></i>
+                  <%= product.name%><br>
+                  <%= image_tag product.photos.first, width: 300, height: 300 %>
+              <%end%> 
+          <%end%>      
+              <div class="card-body">
+                <p class="card-text"><%= number_to_currency(product.price, unit:"RM ") %></p>
+              </div>
           </div>
-        </div>
+          
+        </div>   
+        <%end%> 
       </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <%= image_tag("pexels.jpg")%>
-          </svg>
-
-        <div class="container">
-          <div class="carousel-caption text-end">
-            <h1>Handmade Jewelleries</h1>
-            <p>Made with mixtures of crystals and precious gemstones.</p>           
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</section>
-
-    
-<% if user_signed_in?%>
-  <h4><i class="fa-regular fa-star"></i> Hello dear <%= current_user.role%>! <i class="fa-regular fa-star"></i>Welcome to 6stone!<i class="fa-regular fa-star"></i></h4><br>
-<%end%><br>
-<h2>Latest Crafts</h2>
-
-
-<%if @products.any?%>
-  <div class="row row-cols-auto px-4">
-    <% @products.last(6).each do |product|%>
-    <div class="col-sm p-2" > 
-      <div class="card bg-light h-100 mb-3" style="width: 25rem;">
-      <%= link_to product_path(product), class: 'no-underline' do%>
-          <%if product.photos.attached?%>
-            <i class="fa-solid fa-star"></i>
-              <%= product.name%><br>
-              <%= image_tag product.photos.first, width: 300, height: 300 %>
-          <%end%> 
-      <%end%>      
-          <div class="card-body">
-            <p class="card-text"><%= number_to_currency(product.price, unit:"RM ") %></p>
-          </div>
-      </div>
-      
-    </div>   
-    <%end%> 
-  </div>
-  <%else%>
-    <p>No Products Found.</p>  
-  <%end%>
+      <%else%>
+        <p>No Products Found.</p>  
+      <%end%>
+</div>
