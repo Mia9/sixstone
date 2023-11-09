@@ -18,7 +18,7 @@
 </div>
 
 <%if @shopping_cart.shopping_cart_items.present? %>
-  <%= link_to 'Proceed to Order', new_order_path %>
+  <%= link_to 'Checkout', new_order_path %>
 <%else%>
   <p>Your cart is empty.</p>
 <%end%>

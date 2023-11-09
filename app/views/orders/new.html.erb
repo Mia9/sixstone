@@ -11,7 +11,7 @@
 			<%= f.input :subtotal, as: :string, readonly: true, input_html: { value: @shopping_cart.subtotal} %>
 			<%= f.input :total, as: :string, readonly: true, input_html: { value: @shopping_cart.total }%>
 			<%= f.input :shipping_cost, as: :string, readonly: true, input_html: { value: @shopping_cart.shipping_cost}%>
-			<%= f.button :submit, 'Checkout', class: 'btn btn-outline-secondary'%>
+			<%= f.button :submit, 'Place Order', class: 'btn btn-outline-secondary'%>
 		<%end%>
 	</div>
 </div>
