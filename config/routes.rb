@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'aboutus', to: 'pages#aboutus'
   get 'contact', to: 'pages#contact'
 
+  resources :checkouts,  only: [:new, :create, :show]
+
   resource :shopping_cart, path: 'cart', only: [:show, :destroy]
   resources :shopping_cart_items, path: 'items', only: [:create, :update, :destroy]
 
