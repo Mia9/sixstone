@@ -6,7 +6,7 @@
         <header>
           <h1>Payment methods available</h1>
           <p>
-            Make a test payment with Braintree using PayPal or a card
+            Make payment with using PayPal or a card
           </p>
         </header>
         <h2>Total to be paid: <%= number_to_currency(@amount, unit:"RM ") %></h2>
@@ -24,7 +24,7 @@
           </section>
 
           <input type="hidden" id="nonce" name="payment_method_nonce" />
-          <button class="btn btn-outline-primary" type="submit"><span>Test Transaction</span></button>
+          <button class="btn btn-outline-primary" type="submit"><span>Pay Now</span></button>
         <% end %>
 
       </div>

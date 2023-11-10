@@ -17,5 +17,5 @@
 </div>
 <%end%>
 <% if admin? %>
-<p><%= link_to 'Order histories', orders_path(@orders) %></p>
+<p><%= link_to 'Order histories', orders_path(@orders), class: 'btn btn-outline-secondary' %></p>
 <%end%>
