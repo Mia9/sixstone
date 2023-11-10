@@ -2,10 +2,10 @@ default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-
+  user: postgres
+  password: 123456
+  
 development:
   <<: *default
   database: sixtone
   host: localhost
-  user: postgres
-  password: 123456
